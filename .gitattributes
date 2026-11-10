@@ -1,0 +1,4 @@
+# Estatísticas de linguagem focadas no JS dos labs
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+*.md linguist-documentation=true
