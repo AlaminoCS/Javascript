@@ -1,0 +1,171 @@
+.lab-hero {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr;
+  gap: 1.4rem;
+  align-items: end;
+  padding: 2.2rem 0 2rem;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+  padding: 1rem;
+}
+
+.metrics .label {
+  display: block;
+  color: var(--ink-3);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.metrics strong {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.metrics .tiny {
+  font-size: 1rem;
+  color: var(--copper-soft);
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 1rem;
+  padding-bottom: 3rem;
+}
+
+.board,
+.side {
+  padding: 1.1rem;
+}
+
+.search {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 0.9rem;
+  color: var(--ink-3);
+  font-size: 0.75rem;
+}
+
+.search input {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: #0d0f12;
+  color: var(--ink);
+  padding: 0.75rem 1rem;
+  outline: none;
+}
+
+.search input:focus {
+  border-color: var(--copper);
+}
+
+.card-board {
+  display: grid;
+  gap: 0.7rem;
+  max-height: 28rem;
+  overflow: auto;
+  padding-right: 0.25rem;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  opacity: 0.55;
+  transform: translateY(6px);
+  transition: opacity 220ms var(--ease), transform 220ms var(--ease), border-color 220ms var(--ease);
+}
+
+.card.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: rgba(224, 138, 69, 0.45);
+}
+
+.card header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.45rem;
+  color: var(--ink-3);
+  font-size: 0.72rem;
+}
+
+.badge {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.15rem 0.45rem;
+}
+
+.card.is-inview .badge {
+  border-color: rgba(143, 214, 176, 0.5);
+  color: var(--mint);
+}
+
+.card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.card p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 0.88rem;
+}
+
+.tone-1 {
+  background: linear-gradient(120deg, rgba(138, 180, 255, 0.06), transparent 55%), rgba(255, 255, 255, 0.02);
+}
+
+.tone-2 {
+  background: linear-gradient(120deg, rgba(229, 143, 184, 0.07), transparent 55%), rgba(255, 255, 255, 0.02);
+}
+
+.side-title {
+  margin: 0 0 0.8rem;
+  color: var(--ink-3);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.seen-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+  min-height: 10rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-2);
+}
+
+.seen-list .empty {
+  color: var(--ink-3);
+}
+
+.hint {
+  margin: 1.2rem 0 0;
+  color: var(--ink-3);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 900px) {
+  .lab-hero,
+  .workspace,
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+}

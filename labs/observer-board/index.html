@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>observer-board · Vanilla JS Labs</title>
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark" aria-hidden="true"></span>
+        labs / observer-board
+      </a>
+      <nav class="nav">
+        <a href="../signal-store/">signal-store</a>
+        <a href="../async-pipeline/">async-pipeline</a>
+        <a href="../../">home</a>
+      </nav>
+    </header>
+
+    <section class="lab-hero">
+      <div>
+        <p class="kicker">03 · dom</p>
+        <h1 class="display">Eventos sem<br />desperdício.</h1>
+        <p class="lede">
+          Busca com debounce, render sob demanda e IntersectionObserver
+          pra marcar o que entrou na viewport.
+        </p>
+      </div>
+      <div class="panel metrics">
+        <div>
+          <span class="mono label">visíveis</span>
+          <strong id="visibleCount">0</strong>
+        </div>
+        <div>
+          <span class="mono label">filtrados</span>
+          <strong id="filteredCount">0</strong>
+        </div>
+        <div>
+          <span class="mono label">last keyup</span>
+          <strong id="lastKey" class="mono tiny">—</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="panel board">
+        <label class="search">
+          <span class="mono">filter</span>
+          <input id="search" type="search" placeholder="digite pra filtrar…" />
+        </label>
+        <div id="board" class="card-board" aria-live="polite"></div>
+      </div>
+
+      <aside class="panel side">
+        <p class="mono side-title">na tela agora</p>
+        <ul id="seenList" class="seen-list"></ul>
+        <p class="hint">
+          Role a lista. Os cards acendem quando cruzam o viewport —
+          e o debounce segura o filtro enquanto você digita.
+        </p>
+      </aside>
+    </section>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>signal-store · Vanilla JS Labs</title>
+  <link rel="stylesheet" href="../../styles/base.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark" aria-hidden="true"></span>
+        labs / signal-store
+      </a>
+      <nav class="nav">
+        <a href="../async-pipeline/">async-pipeline</a>
+        <a href="../observer-board/">observer-board</a>
+        <a href="../../">home</a>
+      </nav>
+    </header>
+
+    <section class="lab-hero">
+      <div>
+        <p class="kicker">01 · estado</p>
+        <h1 class="display">Store próprio,<br />UI reativa.</h1>
+        <p class="lede">
+          Um createStore com get/set/subscribe. Lista de tarefas, undo e contador —
+          tudo ouvindo a mesma fonte de verdade.
+        </p>
+      </div>
+      <div class="panel stats" id="stats">
+        <div>
+          <span class="mono label">abertas</span>
+          <strong id="openCount">0</strong>
+        </div>
+        <div>
+          <span class="mono label">feitas</span>
+          <strong id="doneCount">0</strong>
+        </div>
+        <div>
+          <span class="mono label">histórico</span>
+          <strong id="historyCount">0</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="panel board">
+        <form id="taskForm" class="task-form" autocomplete="off">
+          <input id="taskInput" name="title" type="text" placeholder="nova tarefa…" maxlength="80" required />
+          <button class="btn btn-primary" type="submit">add</button>
+        </form>
+
+        <ul id="taskList" class="task-list" aria-live="polite"></ul>
+
+        <div class="toolbar">
+          <button class="btn btn-ghost" type="button" id="undoBtn">undo</button>
+          <button class="btn btn-ghost" type="button" id="clearDoneBtn">limpar feitas</button>
+          <label class="filter">
+            <input type="checkbox" id="onlyOpen" />
+            só abertas
+          </label>
+        </div>
+      </div>
+
+      <aside class="panel log-panel">
+        <div class="log-head">
+          <span class="mono">event log</span>
+          <button class="btn btn-ghost" type="button" id="pulseBtn">+1 pulse</button>
+        </div>
+        <p class="pulse-line">pulse: <strong id="pulseValue">0</strong></p>
+        <ol id="eventLog" class="event-log"></ol>
+      </aside>
+    </section>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

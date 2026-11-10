@@ -1,0 +1,124 @@
+.lab-hero {
+  display: grid;
+  grid-template-columns: 1.35fr 0.75fr;
+  gap: 1.4rem;
+  align-items: end;
+  padding: 2.2rem 0 2rem;
+}
+
+.status-card {
+  padding: 1.1rem 1.2rem;
+}
+
+.status-card .label {
+  display: block;
+  color: var(--ink-3);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.status-card strong {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.status-card p {
+  margin: 0.4rem 0 0;
+  color: var(--ink-2);
+  font-size: 0.92rem;
+}
+
+.status-card[data-state="loading"] strong { color: var(--sky); }
+.status-card[data-state="success"] strong { color: var(--mint); }
+.status-card[data-state="error"] strong { color: var(--danger); }
+.status-card[data-state="aborted"] strong { color: var(--copper-soft); }
+
+.workspace {
+  display: grid;
+  grid-template-columns: 0.95fr 1.15fr;
+  gap: 1rem;
+  padding-bottom: 3rem;
+}
+
+.controls,
+.result {
+  padding: 1.15rem;
+}
+
+.controls label {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+  color: var(--ink-2);
+  font-size: 0.86rem;
+}
+
+.controls select,
+.controls input {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: #0d0f12;
+  color: var(--ink);
+  padding: 0.7rem 0.85rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.4rem 0 1rem;
+}
+
+.trace {
+  margin: 0;
+  padding-left: 1.1rem;
+  min-height: 8rem;
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+.result-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  color: var(--ink-3);
+  font-size: 0.78rem;
+}
+
+.output {
+  margin: 0;
+  min-height: 22rem;
+  max-height: 34rem;
+  overflow: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #0d0f12;
+  color: #c9ced6;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 900px) {
+  .lab-hero,
+  .workspace,
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

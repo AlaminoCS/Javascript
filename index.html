@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vanilla JS Labs · AlaminoCS</title>
+  <meta name="description" content="Laboratórios de JavaScript vanilla: estado, async e DOM sem frameworks." />
+  <link rel="stylesheet" href="./styles/base.css" />
+  <link rel="stylesheet" href="./styles/home.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true"></span>
+        AlaminoCS / Javascript
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#labs">Labs</a>
+        <a href="#como">Como roda</a>
+        <a href="https://github.com/AlaminoCS/Javascript">GitHub</a>
+        <a href="https://vanderlei.alamino.dev.br/">Portfólio</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="kicker">sem framework · sem bundler</p>
+        <h1 class="display">JavaScript cru,<br />organizado de verdade.</h1>
+        <p class="lede">
+          Três laboratórios pequenos pra mostrar o que a linguagem já resolve sozinha:
+          estado, fluxo assíncrono e DOM com performance. Código legível, demo no ar.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#labs">abrir labs</a>
+          <a class="btn btn-ghost" href="https://github.com/AlaminoCS/Javascript">ver código</a>
+        </div>
+        <div class="hero-meta">
+          <span><strong>ES modules</strong> nativos</span>
+          <span><strong>GitHub Pages</strong> ready</span>
+          <span><strong>0</strong> dependências de UI</span>
+        </div>
+      </div>
+
+      <aside class="panel preview" aria-label="Prévia de código">
+        <div class="preview-top">
+          <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <span class="mono">signal-store / createStore.js</span>
+        </div>
+        <pre class="code-block"><code><span class="c">// store mínimo, sem lib</span>
+<span class="k">export</span> <span class="k">function</span> <span class="f">createStore</span>(initial) {
+  <span class="k">let</span> state = structuredClone(initial);
+  <span class="k">const</span> listeners = <span class="k">new</span> Set();
+
+  <span class="k">return</span> {
+    get: () =&gt; state,
+    set(updater) {
+      <span class="k">const</span> next = <span class="k">typeof</span> updater === <span class="s">'function'</span>
+        ? updater(state)
+        : updater;
+      state = Object.freeze({ ...next });
+      listeners.forEach((fn) =&gt; fn(state));
+    },
+    subscribe(fn) {
+      listeners.add(fn);
+      <span class="k">return</span> () =&gt; listeners.delete(fn);
+    }
+  };
+}</code></pre>
+      </aside>
+    </section>
+
+    <section class="section" id="labs">
+      <div class="section-head">
+        <div>
+          <p class="kicker">laboratórios</p>
+          <h2>Três problemas, zero mágica.</h2>
+        </div>
+        <p>Cada lab é uma página completa. Abra, brinque, leia o JS.</p>
+      </div>
+
+      <div class="lab-grid">
+        <a class="panel lab-card" href="./labs/signal-store/">
+          <span class="lab-index">01 / signal-store</span>
+          <h3>Estado sem framework</h3>
+          <p>Um store imutável com subscribe, undo e UI reativa feita na mão.</p>
+          <div class="tags">
+            <span class="tag">closures</span>
+            <span class="tag">immutability</span>
+            <span class="tag">pub/sub</span>
+          </div>
+          <span class="lab-link">entrar no lab <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="panel lab-card" href="./labs/async-pipeline/">
+          <span class="lab-index">02 / async-pipeline</span>
+          <h3>Fetch com resiliência</h3>
+          <p>Pipeline com timeout, retry, abort e estados de loading/erro legíveis.</p>
+          <div class="tags">
+            <span class="tag">async/await</span>
+            <span class="tag">AbortController</span>
+            <span class="tag">retry</span>
+          </div>
+          <span class="lab-link">entrar no lab <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="panel lab-card" href="./labs/observer-board/">
+          <span class="lab-index">03 / observer-board</span>
+          <h3>DOM + performance</h3>
+          <p>Busca com debounce, lista virtual leve e IntersectionObserver na prática.</p>
+          <div class="tags">
+            <span class="tag">debounce</span>
+            <span class="tag">events</span>
+            <span class="tag">observer</span>
+          </div>
+          <span class="lab-link">entrar no lab <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="como">
+      <div class="principles">
+        <article class="panel principle-main">
+          <p class="kicker">como roda</p>
+          <h2>HTML, CSS e JS. Só.</h2>
+          <p>
+            Sem Vite, sem React, sem build step. Abra no Pages ou sirva a pasta localmente.
+            O ponto é ler o código e reconhecer padrões que você leva pra qualquer stack.
+          </p>
+        </article>
+        <div class="principle-list">
+          <article class="panel principle-item">
+            <strong>Código pequeno</strong>
+            <span>Arquivos curtos, nomes honestos, pouca abstração.</span>
+          </article>
+          <article class="panel principle-item">
+            <strong>Demo primeiro</strong>
+            <span>Cada lab mostra o comportamento antes de explicar a teoria.</span>
+          </article>
+          <article class="panel principle-item">
+            <strong>Pronto pra crescer</strong>
+            <span>Quer outro lab? Dropa uma pasta em <span class="mono">/labs</span> e linka na home.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>feito por <a href="https://github.com/AlaminoCS">AlaminoCS</a></span>
+      <span class="mono" id="clock">--:--:--</span>
+    </footer>
+  </div>
+
+  <script type="module" src="./scripts/home.js"></script>
+</body>
+</html>
